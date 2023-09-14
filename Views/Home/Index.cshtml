@@ -1,0 +1,11 @@
+﻿@using YourProfessionWebApp.Domain.Entities;
+@using YourProfessionWebApp.Service;
+@model IQueryable<ProfessionItem>;
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>@Config.CompanyPhone</p>
+    <p>@Model.Single(p => p.Text == "РП и всё тут").Title</p>
+</div>
