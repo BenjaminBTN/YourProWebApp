@@ -15,8 +15,7 @@
 		<!-- Nav -->
 		@await Html.PartialAsync("NavbarPartial")
 
-		<!-- Banner -->
-		@await Html.PartialAsync("BannerPartial")
+		@RenderBody()
 
 		<!-- Main -->
 		<section id="main">
@@ -33,7 +32,7 @@
 							</ul>
 							<header>
 								<h2>ОРИЕНТИР</h2>
-								@RenderBody()
+								
 							</header>
 							<p>
 								Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus. Praesent semper mod quis eget mi. Etiam eu<br />

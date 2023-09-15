@@ -17,6 +17,10 @@ namespace YourProfessionWebApp.Controllers {
             return View(_professionItemRepository.GetAllProfessionItems());
         }
 
+        public IActionResult Cloud() {
+            return View();
+        }
+
         public IActionResult Privacy() {
             return View();
         }
