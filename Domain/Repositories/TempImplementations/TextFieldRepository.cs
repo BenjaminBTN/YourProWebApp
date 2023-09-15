@@ -11,6 +11,11 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
             },
             new TextField() {
                 Id = Guid.NewGuid(),
+                Title = "Облако интересов",
+                CodeWord = "PageInterests"
+            },
+            new TextField() {
+                Id = Guid.NewGuid(),
                 Title = "Выбор профессии",
                 CodeWord = "PagePro"
             },

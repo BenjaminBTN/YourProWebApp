@@ -8,13 +8,10 @@ namespace YourProfessionWebApp.Controllers {
         private readonly ILogger<HomeController> _logger;
         IProfessionItemRepository _professionItemRepository;
 
-        public HomeController(IProfessionItemRepository itemRepository) {
+        public HomeController(IProfessionItemRepository itemRepository, ILogger<HomeController> logger) {
             _professionItemRepository = itemRepository;
-        }
-
-/*        public HomeController(ILogger<HomeController> logger) {
             _logger = logger;
-        }*/
+        }
 
         public IActionResult Index() {
             return View(_professionItemRepository.GetAllProfessionItems());
