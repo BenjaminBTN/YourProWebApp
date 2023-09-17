@@ -5,17 +5,7 @@
 <!-- Banner -->
 @await Html.PartialAsync("BannerPartial")
 
-<section id="main">
-	<div class="container">
-		<div class="row gtr-200">
-			<div class="col-12">
-				<section class="box highlight">
-					<h2 class="display-4">Welcome</h2>
-					<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-					<p>@Config.CompanyPhone</p>
-					<p>@Model.Single(p => p.Text == "РП и всё тут").Title</p>
-				</section>
-			</div>
-		</div>
-	</div>
-</section>
+<h2 class="display-4">Welcome</h2>
+<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<p>@Config.CompanyPhone</p>
+<p>@Model.Single(p => p.Text == "РП и всё тут").Title</p>

@@ -1,4 +1,4 @@
-﻿@import url("../sass/fontawesome-all.min.css");
+﻿@import url("fontawesome-all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700,700italic|Open+Sans+Condensed:700");
 /*
 	TXT by HTML5 UP
@@ -1534,7 +1534,7 @@ ul.contact li a {
   transition: background-color .2s ease-in-out;
   display: block;
   position: relative;
-  width: 48px;
+  width: 150px;
   height: 48px;
   border-radius: 6px;
   outline: 0;
@@ -1873,7 +1873,7 @@ body {
   left: 0;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 0.95);
-  background-image: url("../sass/images/overlay.png");
+  background-image: url("/images/overlay.png");
   width: 100%;
   height: 3.25em;
   line-height: 3.25em;
@@ -1986,7 +1986,7 @@ body {
 /* Banner */
 #banner {
   position: relative;
-  background-image: url("../sass/images/overlay.png"), url("../sass/images/overlay.png"), url("../../images/banner.jpg");
+  background-image: url("/images/overlay.png"), url("/images/overlay.png"), url("/images/landscape.jpg");
   background-position: top left, top left, center center;
   background-repeat: repeat, repeat, no-repeat;
   background-size: auto, auto, cover;
@@ -1996,7 +1996,7 @@ body {
 #banner .content {
   position: relative;
   background-color: rgba(21, 28, 23, 0.85);
-  background-image: url("../sass/images/overlay.png"), url("../sass/images/highlight.png");
+  background-image: url("/images/overlay.png"), url("/images/highlight.png");
   background-position: top left, center center;
   background-size: auto, 100% 250%;
   background-repeat: repeat, no-repeat;
@@ -2060,7 +2060,7 @@ body {
 /* Footer */
 #footer {
   text-align: center;
-  padding: 8em 0 8em 0;
+  padding: 2em 0 2em 0;
 }
 #footer a {
   color: inherit;
@@ -2079,7 +2079,7 @@ body {
   padding: 0.75em 2em 0.75em 2em;
   border-radius: 8px;
   color: #8b9790;
-  margin: 4em 0 0 0;
+  margin: 2em 0 0 0;
 }
 #copyright a {
   color: inherit;
