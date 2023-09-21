@@ -12,7 +12,7 @@ namespace YourProfessionWebApp {
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 			builder.Configuration.Bind("Project", new Config());
 
             builder.Services.AddScoped<IProfessionItemRepository, ProfessionItemRepository>();

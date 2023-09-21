@@ -7,5 +7,14 @@ namespace YourProfessionWebApp.Controllers {
             return View();
         }
 
+        [HttpPost]
+        public string Index(string value) {
+            return value;
+        }
+
+        public string Push(string x) {
+            return x;
+        }
+
     }
 }
