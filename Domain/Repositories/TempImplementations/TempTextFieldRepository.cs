@@ -1,7 +1,8 @@
 ﻿using YourProfessionWebApp.Domain.Entities;
+using YourProfessionWebApp.Domain.Repositories.Interfaces;
 
 namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
-    public class TextFieldRepository {
+    public class TempTextFieldRepository : ITextFieldRepository {
 
         private List<TextField> _textFields = new List<TextField>() {
             new TextField() {
@@ -27,21 +28,21 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
         };
 
         public void DeleteTextField(Guid id) {
-            _textFields.Remove(_textFields.Single(p => p.Id == id));
+            _textFields.Remove(_textFields.Single(t => t.Id == id));
         }
 
         public IQueryable<TextField> GetAllTextFields() {
             return _textFields.AsQueryable();
         }
 
-        public TextField GetTextFieldById(Guid id) {
-            return _textFields.FirstOrDefault(p => p.Id == id);
+        public TextField GetTextFieldByCodeWord(string codeWord) {
+            return _textFields.FirstOrDefault(t => t.CodeWord == codeWord);
         }
 
         public void SaveTextField(TextField textField) {
-            if (_textFields.Where(p => p.Id == textField.Id).Count() > 0) {
+            if (_textFields.Where(t => t.Id == textField.Id).Count() > 0) {
                 for (int i = 0; i < _textFields.Count(); i++) {
-                    if (_textFields[i].Id == textField.Id) _textFields[i].Id = textField.Id;
+                    if (_textFields[i].Id == textField.Id) _textFields[i] = textField;
                 }
             }
             else {

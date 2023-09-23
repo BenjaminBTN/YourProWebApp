@@ -2,9 +2,9 @@
 
 namespace YourProfessionWebApp.Domain.Repositories.Interfaces {
     public interface ITextFieldRepository {
-        IQueryable<TextField> GetAllPages();
-        TextField GetPageByCodeWord(string codeWotrd);
-        void SavePage(TextField entity);
-        void DeletePage(Guid id);
+        IQueryable<TextField> GetAllTextFields();
+        TextField GetTextFieldByCodeWord(string codeWord);
+        void SaveTextField(TextField entity);
+        void DeleteTextField(Guid id);
     }
 }
