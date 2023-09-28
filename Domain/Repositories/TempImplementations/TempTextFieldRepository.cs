@@ -39,6 +39,7 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
             return _textFields.FirstOrDefault(t => t.CodeWord == codeWord);
         }
 
+        // реализация этого же метода в другом синтаксисе в классе TempInterestRepository
         public void SaveTextField(TextField textField) {
             if (_textFields.Where(t => t.Id == textField.Id).Count() > 0) {
                 for (int i = 0; i < _textFields.Count(); i++) {

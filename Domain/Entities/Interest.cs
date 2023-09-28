@@ -1,10 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace YourProfessionWebApp.Domain.Entities {
-    public class Interest : BaseEntity {
+    public class Interest {
+
+        [Required] 
+        public int Id { get; set; }
 
         [Required]
         [Display(Name = "Название увлечения")]
-        public override string Title { get; set; }
+        public string Title { get; set; }
     }
 }

@@ -5,21 +5,45 @@ using System.Linq;
 namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
     public class TempProfessionItemRepository : IProfessionItemRepository {
 
-        private List<ProfessionItem> _professionItems = new List<ProfessionItem> {
+        private static IInterestRepository _interestRepository = new TempInterestRepository();
+
+/*        public TempProfessionItemRepository(IInterestRepository interestRepository) {
+            _interestRepository = interestRepository;
+        }*/
+
+        private static List<ProfessionItem> _professionItems = new List<ProfessionItem> {
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Руководитель строительного проекта",
-                Text = "Менеджер проектов, в обязанности которого входит контроль и организация реализации строительного проекта"
+                Text = "Менеджер проектов, в обязанности которого входит контроль и организация реализации строительного проекта",
+                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Менеджмент" || i.Title == "Строительство" || i.Title == "Физика").ToList()
             },
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Асситент руководителя строительного проекта",
-                Text = "Помощник РП"
+                Text = "Помощник РП",
+                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Менеджмент" || i.Title == "Строительство" || i.Title == "Физика").ToList()
+            },
+            new ProfessionItem() {
+                Id = Guid.NewGuid(),
+                Title = "Художник",
+                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Рисование").ToList()
+            },
+            new ProfessionItem() {
+                Id = Guid.NewGuid(),
+                Title = "Автомеханик", 
+                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Автомобили").ToList()
+            },
+            new ProfessionItem() {
+                Id = Guid.NewGuid(),
+                Title = "Футболист",
+                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Футбол").ToList()
             },
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Управляющий директор",
-                Text = "Директор по доверенности от УК"
+                Text = "Директор по доверенности от УК",
+                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Менеджмент").ToList()
             }
         };
 

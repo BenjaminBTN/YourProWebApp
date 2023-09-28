@@ -1,21 +1,24 @@
-﻿<h2 class="major"><span>что больше нравится ?</span></h2>
+﻿@using YourProfessionWebApp.Domain.Entities;
+@model List<Interest>
+
+<h2 class="major"><span>что больше нравится ?</span></h2>
     <ul class="contact">
         <li>
             <form method="post" >
                 <input type="hidden" value="Fish" name="value"/>
-                <button type="submit">Рыбалка</button>
+                <button type="submit">@Model.ElementAt(0).Title</button>
             </form>
         </li>
         <li>
             <form method="post">
                 <input type="hidden" value="Auto" name="value" />
-                <button type="submit">Авто</button>
+            <button type="submit">@Model.ElementAt(1).Title</button>
             </form>
         </li>
         <li>
             <form method="post">
                 <input type="hidden" value="Hunt" name="value" />
-                <button type="submit">Охота</button>
+            <button type="submit">@Model.ElementAt(2).Title</button>
             </form>
         </li>
 

@@ -3,8 +3,8 @@
 namespace YourProfessionWebApp.Domain.Repositories.Interfaces {
     public interface IInterestRepository {
         IQueryable<Interest> GetAllInterests();
-        Interest GetInterestById(Guid id);
+        Interest GetInterestById(int id);
         void SaveInterest(Interest entity);
-        void DeleteInterest(Guid id);
+        void DeleteInterest(int id);
     }
 }
