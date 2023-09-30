@@ -6,8 +6,12 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
 
         private List<Interest> _interests = new List<Interest>() {
             new Interest() {
-                Id = 1,
+                Id = 0,
                 Title = "Рыбалка"
+            },
+            new Interest() {
+                Id = 1,
+                Title = "Охота"
             },
             new Interest() {
                 Id = 2,
@@ -40,10 +44,6 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
             new Interest() {
                 Id = 9,
                 Title = "Рисование"
-            },
-            new Interest() {
-                Id = 10,
-                Title = "Охота"
             }
         };
 
@@ -66,6 +66,10 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
             } else {
                 _interests.Add(interest);
             }
+        }
+
+        public int GetCountOfInterests() {
+            return _interests.Count;
         }
     }
 }

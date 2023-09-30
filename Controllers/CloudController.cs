@@ -15,13 +15,30 @@ namespace YourProfessionWebApp.Controllers {
 
         public IActionResult Index() {
             Random random = new Random();
+            int countOfInterests = _interestRepository.GetCountOfInterests();
 
             List<Interest> threeInterests = new List<Interest>();
+
+            int[] ints = new int[countOfInterests];
+            for (int i = 0; i < countOfInterests; i++) {
+                ints[i] = i;
+            }
+
+            //shuffle ints[]
+            for (int i = countOfInterests - 1; i >= 1; i--) {
+                int j = random.Next(i + 1);
+                // обменять значения data[j] и data[i]
+                var temp = ints[j];
+                ints[j] = ints[i];
+                ints[i] = temp;
+            }
+
             for (int i = 0; i < 3; i++) {
-                threeInterests.Add(_interestRepository.GetInterestById(random.Next(1, _interestRepository.GetAllInterests().Count() + 1)));
+                threeInterests.Add(_interestRepository.GetInterestById(ints[i]));
             }
             return View(threeInterests);
         }
+
 
         [HttpPost]
         public string Index(string value) {

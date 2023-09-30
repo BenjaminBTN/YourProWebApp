@@ -6,5 +6,6 @@ namespace YourProfessionWebApp.Domain.Repositories.Interfaces {
         Interest GetInterestById(int id);
         void SaveInterest(Interest entity);
         void DeleteInterest(int id);
+        public int GetCountOfInterests();
     }
 }
