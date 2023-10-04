@@ -1,43 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections;
-using System.Collections.Generic;
 using YourProfessionWebApp.Domain.Entities;
 using YourProfessionWebApp.Domain.Repositories.Interfaces;
+using YourProfessionWebApp.Domain.Repositories.TempImplementations;
+using YourProfessionWebApp.Models;
 
 namespace YourProfessionWebApp.Controllers {
     public class CloudController : Controller {
+        private static readonly IInterestRepository _interestRepository;
+        private static CloudOfInterests cloudOfInterests;
 
-        private static IInterestRepository _interestRepository;
-
-        public CloudController(IInterestRepository interestRepository) {
-            _interestRepository = interestRepository;
+        static CloudController() {
+            _interestRepository = new TempInterestRepository();
+            cloudOfInterests = new CloudOfInterests(_interestRepository);
         }
 
         public IActionResult Index() {
-            Random random = new Random();
-            int countOfInterests = _interestRepository.GetCountOfInterests();
-
-            List<Interest> threeInterests = new List<Interest>();
-
-            int[] ints = new int[countOfInterests];
-            for (int i = 0; i < countOfInterests; i++) {
-                ints[i] = i;
+            if (cloudOfInterests.counter >= 2) {
+                cloudOfInterests.counter = 0;
+                //для пробы:
+                return View("/Views/Home/Index.cshtml", new TempProfessionItemRepository().GetAllProfessionItems());
             }
 
-            //shuffle ints[]
-            for (int i = countOfInterests - 1; i >= 1; i--) {
-                int j = random.Next(i + 1);
-                // обменять значения data[j] и data[i]
-                var temp = ints[j];
-                ints[j] = ints[i];
-                ints[i] = temp;
-            }
-
-            for (int i = 0; i < 3; i++) {
-                threeInterests.Add(_interestRepository.GetInterestById(ints[i]));
-            }
-            return View(threeInterests);
+            return View(cloudOfInterests.GetInterests());
         }
+
 
 
         [HttpPost]

@@ -15,9 +15,9 @@ namespace YourProfessionWebApp {
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 			builder.Configuration.Bind("Project", new Config());
 
-            builder.Services.AddScoped<IProfessionItemRepository, TempProfessionItemRepository>();
-            builder.Services.AddScoped<ITextFieldRepository, TempTextFieldRepository>();
-            builder.Services.AddScoped<IInterestRepository, TempInterestRepository>();
+            builder.Services.AddSingleton<IProfessionItemRepository, TempProfessionItemRepository>();
+            builder.Services.AddSingleton<ITextFieldRepository, TempTextFieldRepository>();
+            builder.Services.AddSingleton<IInterestRepository, TempInterestRepository>();
 
             // ?????
             builder.Services.AddDbContext<Context>();

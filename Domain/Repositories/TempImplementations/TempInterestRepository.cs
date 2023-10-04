@@ -67,9 +67,5 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
                 _interests.Add(interest);
             }
         }
-
-        public int GetCountOfInterests() {
-            return _interests.Count;
-        }
     }
 }
