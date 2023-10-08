@@ -5,23 +5,31 @@
     <ul class="contact">
         <li>
             <form method="post" >
-                <input type="hidden" value="Fish" name="value"/>
+                <input type="hidden" name="id" value=@Model.ElementAt(0).Id />
+                <input type="hidden" name="title" value=@Model.ElementAt(0).Title />
                 <button type="submit">@Model.ElementAt(0).Title</button>
             </form>
         </li>
         <li>
             <form method="post">
-                <input type="hidden" value="Auto" name="value" />
-            <button type="submit">@Model.ElementAt(1).Title</button>
+                <input type="hidden" name="id" value=@Model.ElementAt(1).Id />
+                <input type="hidden" name="title" value=@Model.ElementAt(1).Title />
+                <button type="submit">@Model.ElementAt(1).Title</button>
+            </form>
+        </li>
+        <li>
+            <form method="post">
+                <input type="hidden" name="id" value=@Model.ElementAt(2).Id />
+                <input type="hidden" name="title" value=@Model.ElementAt(2).Title />
+                <button type="submit">@Model.ElementAt(2).Title</button>
             </form>
         </li>
         <li>
             <form method="post">
                 <input type="hidden" value="Hunt" name="value" />
-            <button type="submit">@Model.ElementAt(2).Title</button>
+                <button type="submit" id="vip">ничего</button>
             </form>
         </li>
-
         
 @*         <li><a class="icon" href="/Cloud/Push?x=auto">Авто</a></li> *@
     </ul>

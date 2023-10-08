@@ -2093,6 +2093,11 @@ body {
   line-height: 1em;
 }
 
+/* MyBtn */
+#vip {
+    background-color: brown;
+}
+
 /* XLarge */
 @media screen and (max-width: 1680px) {
   /* Basic */

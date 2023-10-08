@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using YourProfessionWebApp.Domain.Entities;
 using YourProfessionWebApp.Domain.Repositories.Interfaces;
 using YourProfessionWebApp.Domain.Repositories.TempImplementations;
@@ -15,9 +16,10 @@ namespace YourProfessionWebApp.Controllers {
         }
 
         public IActionResult Index() {
-            if (cloudOfInterests.counter >= 2) {
+            if (cloudOfInterests.counter >= 3) {
                 cloudOfInterests.counter = 0;
                 //для пробы:
+                Response.Redirect("/Home/Index");
                 return View("/Views/Home/Index.cshtml", new TempProfessionItemRepository().GetAllProfessionItems());
             }
 
@@ -27,8 +29,8 @@ namespace YourProfessionWebApp.Controllers {
 
 
         [HttpPost]
-        public string Index(string value) {
-            return value;
+        public string Index(Interest value) {
+            return value.Title;
         }
 
         public string Push(string x) {
