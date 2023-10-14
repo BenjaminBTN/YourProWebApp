@@ -7,19 +7,19 @@ using YourProfessionWebApp.Models;
 
 namespace YourProfessionWebApp.Controllers {
     public class CloudController : Controller {
-        private static readonly IInterestRepository _interestRepository;
-        private static CloudOfInterests cloudOfInterests;
+        private readonly IInterestRepository _interestRepository;
+        private static CloudOfInterests cloudOfInterests = new CloudOfInterests();
+        static List<Interest> resultListOfInterests = new List<Interest>();
 
-        static CloudController() {
+        public CloudController() {
             _interestRepository = new TempInterestRepository();
-            cloudOfInterests = new CloudOfInterests(_interestRepository);
         }
 
         public IActionResult Index() {
             if (cloudOfInterests.counter >= 3) {
                 cloudOfInterests.counter = 0;
                 //для пробы:
-                Response.Redirect("/Home/Index");
+                Response.Redirect("/Cloud/Result");
                 return View("/Views/Home/Index.cshtml", new TempProfessionItemRepository().GetAllProfessionItems());
             }
 
@@ -29,12 +29,15 @@ namespace YourProfessionWebApp.Controllers {
 
 
         [HttpPost]
-        public string Index(Interest value) {
-            return value.Title;
+        public void Index(Interest value) {
+            resultListOfInterests.Add(value);
+            int index = _interestRepository.GetAllInterests().ToList().IndexOf(_interestRepository.GetAllInterests().First(x => x.Title == value.Title));
+            cloudOfInterests.allInterests.RemoveAt(index);
+            Response.Redirect("/Cloud/Index");
         }
 
-        public string Push(string x) {
-            return x;
+        public IActionResult Result() {
+            return View(resultListOfInterests);
         }
 
     }

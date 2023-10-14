@@ -4,18 +4,13 @@ using YourProfessionWebApp.Domain.Repositories.TempImplementations;
 
 namespace YourProfessionWebApp.Models {
     public class CloudOfInterests {
-        private List<Interest> threeInterests;
+        public List<Interest> allInterests = new TempInterestRepository().GetAllInterests().ToList();
         internal int counter = 0;
-        private readonly IInterestRepository interestRepository;
-
-        public CloudOfInterests(IInterestRepository interestRepository) {
-            this.interestRepository = interestRepository;
-        }
 
         public List<Interest> GetInterests() {
-            
-            threeInterests = new List<Interest>();
-            int countOfInterests = interestRepository.GetAllInterests().Count();
+
+            List<Interest> threeInterests = new List<Interest>();
+            int countOfInterests = allInterests.Count();
 
             int[] ints = new int[countOfInterests];
             for (int i = 0; i < countOfInterests; i++) {
@@ -32,10 +27,12 @@ namespace YourProfessionWebApp.Models {
             }
 
             for (int i = 0; i < 3; i++) {
-                threeInterests.Add(interestRepository.GetInterestById(ints[i]));
+                threeInterests.Add(allInterests.ElementAt(ints[i]));
             }
 
-            //threeInterests.AddRange(interestRepository.GetAllInterests().Take(3));
+/*            for (int i = 0; i < 3; i++) {
+                allInterests.RemoveAt(ints[i]);
+            }*/
 
             counter++;
 
