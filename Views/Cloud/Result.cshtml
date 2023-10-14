@@ -1,0 +1,10 @@
+﻿@using YourProfessionWebApp.Domain.Entities;
+@model List<Interest>
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h1>Result</h1>
+@foreach(var i in Model) {
+    <p>@i.Title</p>
+}
