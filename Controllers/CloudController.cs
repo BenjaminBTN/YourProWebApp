@@ -7,37 +7,35 @@ using YourProfessionWebApp.Models;
 
 namespace YourProfessionWebApp.Controllers {
     public class CloudController : Controller {
-        private readonly IInterestRepository _interestRepository;
-        private static CloudOfInterests cloudOfInterests = new CloudOfInterests();
-        static List<Interest> resultListOfInterests = new List<Interest>();
+        private readonly IInterestRepository interestRepository;
+        private static CloudOfInterests cloudOfInterests;
 
-        public CloudController() {
-            _interestRepository = new TempInterestRepository();
+        public CloudController(IInterestRepository interestRepository) {
+            this.interestRepository = interestRepository;
         }
 
-        public IActionResult Index() {
-            if (cloudOfInterests.counter >= 3) {
-                cloudOfInterests.counter = 0;
-                //для пробы:
-                Response.Redirect("/Cloud/Result");
-                return View("/Views/Home/Index.cshtml", new TempProfessionItemRepository().GetAllProfessionItems());
+        [HttpGet]
+        public IActionResult Index(int flag) {
+            if (cloudOfInterests == null) {
+                cloudOfInterests = new CloudOfInterests();
+                cloudOfInterests.RemainingInterests = interestRepository.GetAllInterests().ToList();
+            }
+
+            if ((cloudOfInterests.FavoriteInterests.Count > 0 && cloudOfInterests.FavoriteInterests.Count % 3 == 0 && flag == 0) || cloudOfInterests.RemainingInterests.Count <= 3) {
+                return RedirectToAction("Result", "Cloud");
             }
 
             return View(cloudOfInterests.GetInterests());
         }
 
-
-
         [HttpPost]
-        public void Index(Interest value) {
-            resultListOfInterests.Add(value);
-            int index = _interestRepository.GetAllInterests().ToList().IndexOf(_interestRepository.GetAllInterests().First(x => x.Title == value.Title));
-            cloudOfInterests.allInterests.RemoveAt(index);
+        public void Add(int id) {
+            cloudOfInterests.AddToFavoriteWithDel(interestRepository.GetInterestById(id));
             Response.Redirect("/Cloud/Index");
         }
 
         public IActionResult Result() {
-            return View(resultListOfInterests);
+            return View(cloudOfInterests);
         }
 
     }

@@ -13,14 +13,19 @@ namespace YourProfessionWebApp {
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
-			builder.Configuration.Bind("Project", new Config());
-
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             builder.Services.AddSingleton<IProfessionItemRepository, TempProfessionItemRepository>();
             builder.Services.AddSingleton<ITextFieldRepository, TempTextFieldRepository>();
             builder.Services.AddSingleton<IInterestRepository, TempInterestRepository>();
-
             // ?????
             builder.Services.AddDbContext<Context>();
+
+            builder.Configuration.Bind("Project", new Config());
 
 			var app = builder.Build();
 
@@ -33,7 +38,7 @@ namespace YourProfessionWebApp {
             }
 
 			app.UseRouting();
-
+            app.UseSession();
 			app.UseStaticFiles();
 
             //app.MapControllerRoute(

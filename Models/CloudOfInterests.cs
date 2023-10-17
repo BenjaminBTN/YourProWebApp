@@ -4,13 +4,15 @@ using YourProfessionWebApp.Domain.Repositories.TempImplementations;
 
 namespace YourProfessionWebApp.Models {
     public class CloudOfInterests {
-        public List<Interest> allInterests = new TempInterestRepository().GetAllInterests().ToList();
-        internal int counter = 0;
+
+        public List<Interest> FavoriteInterests { get; set; } = new List<Interest>();
+
+        public List<Interest> RemainingInterests { get; set; }
 
         public List<Interest> GetInterests() {
 
             List<Interest> threeInterests = new List<Interest>();
-            int countOfInterests = allInterests.Count();
+            int countOfInterests = RemainingInterests.Count();
 
             int[] ints = new int[countOfInterests];
             for (int i = 0; i < countOfInterests; i++) {
@@ -27,16 +29,22 @@ namespace YourProfessionWebApp.Models {
             }
 
             for (int i = 0; i < 3; i++) {
-                threeInterests.Add(allInterests.ElementAt(ints[i]));
+                threeInterests.Add(RemainingInterests.ElementAt(ints[i]));
             }
 
 /*            for (int i = 0; i < 3; i++) {
                 allInterests.RemoveAt(ints[i]);
             }*/
 
-            counter++;
-
             return threeInterests;
+        }
+
+        public void AddToFavoriteWithDel(Interest interest) {
+            if(FavoriteInterests.Contains(interest) || !RemainingInterests.Contains(interest)) {
+                return;
+            }
+            FavoriteInterests.Add(interest);
+            RemainingInterests.Remove(interest);
         }
     }
 }

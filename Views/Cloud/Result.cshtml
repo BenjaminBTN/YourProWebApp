@@ -1,10 +1,14 @@
 ﻿@using YourProfessionWebApp.Domain.Entities;
-@model List<Interest>
+@model CloudOfInterests
 @{
     ViewData["Title"] = "Result";
 }
 
 <h1>Result</h1>
-@foreach(var i in Model) {
+@foreach(var i in Model.FavoriteInterests) {
     <p>@i.Title</p>
+}
+
+@if (Model.RemainingInterests.Count > 3) {
+    <a href="/Cloud/Index?flag=1">Продолжить</a>
 }
