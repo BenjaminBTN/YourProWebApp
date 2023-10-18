@@ -21,7 +21,8 @@ namespace YourProfessionWebApp.Controllers {
                 cloudOfInterests.RemainingInterests = interestRepository.GetAllInterests().ToList();
             }
 
-            if ((cloudOfInterests.FavoriteInterests.Count > 0 && cloudOfInterests.FavoriteInterests.Count % 3 == 0 && flag == 0) || cloudOfInterests.RemainingInterests.Count < 3) {
+            if ((cloudOfInterests.FavoriteInterests.Count > 0 && cloudOfInterests.FavoriteInterests.Count % 3 == 0 && flag == 0) 
+                || cloudOfInterests.RemainingInterests.Count < 3) {
                 return RedirectToAction("Result", "Cloud");
             }
 

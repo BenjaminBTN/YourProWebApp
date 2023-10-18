@@ -32,10 +32,6 @@ namespace YourProfessionWebApp.Models {
                 threeInterests.Add(RemainingInterests.ElementAt(ints[i]));
             }
 
-/*            for (int i = 0; i < 3; i++) {
-                allInterests.RemoveAt(ints[i]);
-            }*/
-
             return threeInterests;
         }
 
