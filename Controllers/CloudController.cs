@@ -21,11 +21,16 @@ namespace YourProfessionWebApp.Controllers {
                 cloudOfInterests.RemainingInterests = interestRepository.GetAllInterests().ToList();
             }
 
-            if ((cloudOfInterests.FavoriteInterests.Count > 0 && cloudOfInterests.FavoriteInterests.Count % 3 == 0 && flag == 0) || cloudOfInterests.RemainingInterests.Count <= 3) {
+            if ((cloudOfInterests.FavoriteInterests.Count > 0 && cloudOfInterests.FavoriteInterests.Count % 3 == 0 && flag == 0) || cloudOfInterests.RemainingInterests.Count < 3) {
                 return RedirectToAction("Result", "Cloud");
             }
 
             return View(cloudOfInterests.GetInterests());
+        }
+
+        [HttpGet]
+        public IActionResult Result() {
+            return View(cloudOfInterests);
         }
 
         [HttpPost]
@@ -34,8 +39,12 @@ namespace YourProfessionWebApp.Controllers {
             Response.Redirect("/Cloud/Index");
         }
 
-        public IActionResult Result() {
-            return View(cloudOfInterests);
+        [HttpPost]
+        public void Skip(List<Interest> list) {
+            foreach (Interest interest in list) {
+                cloudOfInterests.RemainingInterests.Remove(interest);
+            }
+            Response.Redirect("/Cloud/Index");
         }
 
     }
