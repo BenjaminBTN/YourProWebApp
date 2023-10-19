@@ -34,6 +34,12 @@ namespace YourProfessionWebApp.Controllers {
             return View(cloud);
         }
 
+        [HttpGet]
+        public void Refresh() {
+            cloud = null;
+            Response.Redirect("/Cloud/Index");
+        }
+
         [HttpPost]
         public void Add(int id) {
             cloud.AddToFavoriteWithDel(interestRepository.GetInterestById(id));

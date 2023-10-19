@@ -10,5 +10,7 @@
 }
 
 @if (Model.RemainingInterests.Count > 3) {
-    <a href="/Cloud/Index?flag=1">Продолжить</a>
+    <a href="/Cloud/Index?flag=1">Продолжить выбор</a>
+} else {
+    <a href="/Cloud/Refresh">Попробовать заново</a>
 }
