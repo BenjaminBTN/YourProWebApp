@@ -23,7 +23,9 @@
         </li>
         <li>
             <form method="post" asp-action="Skip">
-                <input type="hidden" name="list" value=@Model/>
+                <input type="hidden" name="id1" value=@Model.ElementAt(0).Id />
+                <input type="hidden" name="id2" value=@Model.ElementAt(1).Id />
+                <input type="hidden" name="id3" value=@Model.ElementAt(2).Id />
                 <button type="submit" id="vip">ничего</button>
             </form>
         </li>

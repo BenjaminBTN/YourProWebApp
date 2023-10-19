@@ -3,7 +3,7 @@ using YourProfessionWebApp.Domain.Repositories.Interfaces;
 using YourProfessionWebApp.Domain.Repositories.TempImplementations;
 
 namespace YourProfessionWebApp.Models {
-    public class CloudOfInterests {
+    public class CloudViewModel {
 
         public List<Interest> FavoriteInterests { get; set; } = new List<Interest>();
 

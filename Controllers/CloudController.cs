@@ -8,7 +8,7 @@ using YourProfessionWebApp.Models;
 namespace YourProfessionWebApp.Controllers {
     public class CloudController : Controller {
         private readonly IInterestRepository interestRepository;
-        private static CloudOfInterests cloudOfInterests;
+        private static CloudViewModel cloud;
 
         public CloudController(IInterestRepository interestRepository) {
             this.interestRepository = interestRepository;
@@ -16,35 +16,35 @@ namespace YourProfessionWebApp.Controllers {
 
         [HttpGet]
         public IActionResult Index(int flag) {
-            if (cloudOfInterests == null) {
-                cloudOfInterests = new CloudOfInterests();
-                cloudOfInterests.RemainingInterests = interestRepository.GetAllInterests().ToList();
+            if (cloud == null) {
+                cloud = new CloudViewModel();
+                cloud.RemainingInterests = interestRepository.GetAllInterests().ToList();
             }
 
-            if ((cloudOfInterests.FavoriteInterests.Count > 0 && cloudOfInterests.FavoriteInterests.Count % 3 == 0 && flag == 0) 
-                || cloudOfInterests.RemainingInterests.Count < 3) {
+            if ((cloud.FavoriteInterests.Count > 0 && cloud.FavoriteInterests.Count % 3 == 0 && flag == 0) 
+                || cloud.RemainingInterests.Count < 3) {
                 return RedirectToAction("Result", "Cloud");
             }
 
-            return View(cloudOfInterests.GetInterests());
+            return View(cloud.GetInterests());
         }
 
         [HttpGet]
         public IActionResult Result() {
-            return View(cloudOfInterests);
+            return View(cloud);
         }
 
         [HttpPost]
         public void Add(int id) {
-            cloudOfInterests.AddToFavoriteWithDel(interestRepository.GetInterestById(id));
+            cloud.AddToFavoriteWithDel(interestRepository.GetInterestById(id));
             Response.Redirect("/Cloud/Index");
         }
 
         [HttpPost]
-        public void Skip(List<Interest> list) {
-            foreach (Interest interest in list) {
-                cloudOfInterests.RemainingInterests.Remove(interest);
-            }
+        public void Skip(int id1, int id2, int id3) {
+            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id1));
+            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id2));
+            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id3));
             Response.Redirect("/Cloud/Index");
         }
 
