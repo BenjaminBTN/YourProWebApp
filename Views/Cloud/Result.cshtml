@@ -1,11 +1,29 @@
 ﻿@using YourProfessionWebApp.Domain.Entities;
-@model CloudViewModel
+@model ResultProViewModel
 @{
     ViewData["Title"] = "Result";
 }
 
-<h1>Result</h1>
-@foreach(var i in Model.FavoriteInterests) {
+<h1>ТВОЯ ПРОФЕССИЯ:</h1>
+
+@foreach (var i in Model.RelevantProfessions) {
+    if (i.Value == Model.MaxOverlap) {
+        <p>@i.Key</p>
+    }
+}
+
+@if (Model.RelevantProfessions.Count == 0) {
+    <p>информации недостаточно, начните заново</p>
+}
+
+<a href="/Cloud/Refresh">Попробовать заново</a>
+
+
+
+
+
+
+@* @foreach(var i in Model.FavoriteInterests) {
     <p>@i.Title</p>
 }
 
@@ -13,4 +31,4 @@
     <a href="/Cloud/Index?flag=1">Продолжить выбор</a>
 } else {
     <a href="/Cloud/Refresh">Попробовать заново</a>
-}
+} *@

@@ -8,10 +8,13 @@ using YourProfessionWebApp.Models;
 namespace YourProfessionWebApp.Controllers {
     public class CloudController : Controller {
         private readonly IInterestRepository interestRepository;
+        private readonly IProfessionItemRepository professionItemRepository;
         private static CloudViewModel cloud;
+        private static ResultProViewModel result;
 
-        public CloudController(IInterestRepository interestRepository) {
+        public CloudController(IInterestRepository interestRepository, IProfessionItemRepository professionItemRepository) {
             this.interestRepository = interestRepository;
+            this.professionItemRepository = professionItemRepository;
         }
 
         [HttpGet]
@@ -31,7 +34,9 @@ namespace YourProfessionWebApp.Controllers {
 
         [HttpGet]
         public IActionResult Result() {
-            return View(cloud);
+            result = new ResultProViewModel();
+            result.GetBestProfession(professionItemRepository, cloud.FavoriteInterests);
+            return View(result);
         }
 
         [HttpGet]
@@ -39,6 +44,10 @@ namespace YourProfessionWebApp.Controllers {
             cloud = null;
             Response.Redirect("/Cloud/Index");
         }
+
+
+
+
 
         [HttpPost]
         public void Add(int id) {
@@ -51,7 +60,7 @@ namespace YourProfessionWebApp.Controllers {
             cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id1));
             cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id2));
             cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id3));
-            Response.Redirect("/Cloud/Index");
+            Response.Redirect("/Cloud/Index?flag=1");
         }
 
     }
