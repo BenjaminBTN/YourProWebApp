@@ -16,34 +16,34 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
                 Id = Guid.NewGuid(),
                 Title = "Руководитель строительного проекта",
                 Text = "Менеджер проектов, в обязанности которого входит контроль и организация реализации строительного проекта",
-                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Менеджмент" || i.Title == "Строительство" || i.Title == "Физика").ToList()
+                InterestsId = new List<int> { 3, 4, 6 }
             },
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Асситент руководителя строительного проекта",
                 Text = "Помощник РП",
-                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Менеджмент" || i.Title == "Строительство" || i.Title == "Физика").ToList()
+                InterestsId = new List<int> { 3, 4, 6 }
             },
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Художник",
-                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Рисование").ToList()
+                InterestsId = new List<int> { 9 }
             },
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Автомеханик", 
-                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Автомобили").ToList()
+                InterestsId = new List < int > { 2 }
             },
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Футболист",
-                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Футбол").ToList()
+                InterestsId = new List < int > { 5, 8 }
             },
             new ProfessionItem() {
                 Id = Guid.NewGuid(),
                 Title = "Управляющий директор",
                 Text = "Директор по доверенности от УК",
-                Interests = _interestRepository.GetAllInterests().Where(i => i.Title == "Менеджмент").ToList()
+                InterestsId = new List < int > { 3 }
             }
         };
 

@@ -15,7 +15,7 @@ namespace YourProfessionWebApp.Domain.Entities {
 
         [Required(ErrorMessage = "Заполните сопутствующие интересы")]
         [Display(Name = "Сопутствующие интересы")]
-        public List<Interest> Interests { get; set; }
+        public List<int> InterestsId { get; set; }
 
     }
 }

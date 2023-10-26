@@ -6,6 +6,8 @@ namespace YourProfessionWebApp.Models {
 
         public Dictionary<string, int> RelevantProfessions { get; set; } = new Dictionary<string, int>();
 
+        public List<Interest> RemainingInterests { get; set; }
+
         public int MaxOverlap {
             get {
                 int max = 0;
@@ -22,9 +24,9 @@ namespace YourProfessionWebApp.Models {
             List<ProfessionItem> proItems = proRepository.GetAllProfessionItems().ToList();
 
             foreach (var proItem in proItems) {
-                foreach (var interest in proItem.Interests) {
+                foreach (var interest in proItem.InterestsId) {
                     foreach (var i in interests) {
-                        if (i.Id == interest.Id) {
+                        if (i.Id == interest) {
                             max++;
                         }
                     }

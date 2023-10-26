@@ -36,6 +36,7 @@ namespace YourProfessionWebApp.Controllers {
         public IActionResult Result() {
             result = new ResultProViewModel();
             result.GetBestProfession(professionItemRepository, cloud.FavoriteInterests);
+            result.RemainingInterests = cloud.RemainingInterests;
             return View(result);
         }
 
