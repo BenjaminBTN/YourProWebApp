@@ -22,6 +22,7 @@ namespace YourProfessionWebApp {
             builder.Services.AddSingleton<IProfessionItemRepository, TempProfessionItemRepository>();
             builder.Services.AddSingleton<ITextFieldRepository, TempTextFieldRepository>();
             builder.Services.AddSingleton<IInterestRepository, TempInterestRepository>();
+
             // ?????
             builder.Services.AddDbContext<Context>();
 

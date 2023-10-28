@@ -6,8 +6,6 @@ namespace YourProfessionWebApp.Models {
 
         public Dictionary<string, int> RelevantProfessions { get; set; } = new Dictionary<string, int>();
 
-        public List<Interest> RemainingInterests { get; set; }
-
         public int MaxOverlap {
             get {
                 int max = 0;
