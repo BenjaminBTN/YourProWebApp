@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Domain\Repositories\EF\" />
-    <Folder Include="Models\ViewComponents\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\sass\" />
   </ItemGroup>

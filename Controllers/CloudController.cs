@@ -4,6 +4,7 @@ using YourProfessionWebApp.Domain.Entities;
 using YourProfessionWebApp.Domain.Repositories.Interfaces;
 using YourProfessionWebApp.Domain.Repositories.TempImplementations;
 using YourProfessionWebApp.Models;
+using YourProfessionWebApp.Service;
 
 namespace YourProfessionWebApp.Controllers {
     public class CloudController : Controller {
@@ -21,7 +22,7 @@ namespace YourProfessionWebApp.Controllers {
         public IActionResult Index(int flag) {
             if (cloud == null) {
                 cloud = new CloudViewModel();
-                cloud.RemainingInterests = interestRepository.GetAllInterests().ToList();
+                cloud.RemainingInterests = interestRepository.GetAllId().ToList();
             }
 
             if ((cloud.FavoriteInterests.Count > 0 && cloud.FavoriteInterests.Count % 3 == 0 && flag == 0) 
@@ -29,7 +30,9 @@ namespace YourProfessionWebApp.Controllers {
                 return RedirectToAction("Result", "Cloud");
             }
 
-            return View(cloud.GetInterests());
+            cloud.ThreeInterests = InterestsService.GetThreeInterests(cloud.RemainingInterests, interestRepository);
+
+            return View(cloud);
         }
 
         [HttpGet]
@@ -49,15 +52,15 @@ namespace YourProfessionWebApp.Controllers {
 
         [HttpPost]
         public void Add(int id) {
-            cloud.AddToFavoriteWithDel(interestRepository.GetInterestById(id));
+            cloud.AddToFavoriteWithDel(id);
             Response.Redirect("/Cloud/Index");
         }
 
         [HttpPost]
         public void Skip(int id1, int id2, int id3) {
-            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id1));
-            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id2));
-            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i.Id == id3));
+            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i == id1));
+            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i == id2));
+            cloud.RemainingInterests.Remove(cloud.RemainingInterests.Single(i => i == id3));
             Response.Redirect("/Cloud/Index?flag=1");
         }
 

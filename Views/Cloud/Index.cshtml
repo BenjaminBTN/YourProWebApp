@@ -1,31 +1,31 @@
 ﻿@using YourProfessionWebApp.Domain.Entities;
-@model List<Interest>
+@model CloudViewModel
 
 <h2 class="major"><span>что больше нравится ?</span></h2>
     <ul class="contact">
         <li>
             <form method="post" asp-action="Add">
-                <input type="hidden" name="id" value=@Model.ElementAt(0).Id />
-                <button type="submit">@Model.ElementAt(0).Title</button>
+                <input type="hidden" name="id" value=@Model.ThreeInterests.ElementAt(0).Id />
+                <button type="submit">@Model.ThreeInterests.ElementAt(0).Title</button>
             </form>
         </li>
         <li>
             <form method="post" asp-action="Add">
-                <input type="hidden" name="id" value=@Model.ElementAt(1).Id />
-                <button type="submit">@Model.ElementAt(1).Title</button>
+                <input type="hidden" name="id" value=@Model.ThreeInterests.ElementAt(1).Id />
+                <button type="submit">@Model.ThreeInterests.ElementAt(1).Title</button>
             </form>
         </li>
         <li>
             <form method="post" asp-action="Add">
-                <input type="hidden" name="id" value=@Model.ElementAt(2).Id />
-                <button type="submit">@Model.ElementAt(2).Title</button>
+                <input type="hidden" name="id" value=@Model.ThreeInterests.ElementAt(2).Id />
+                <button type="submit">@Model.ThreeInterests.ElementAt(2).Title</button>
             </form>
         </li>
         <li>
             <form method="post" asp-action="Skip">
-                <input type="hidden" name="id1" value=@Model.ElementAt(0).Id />
-                <input type="hidden" name="id2" value=@Model.ElementAt(1).Id />
-                <input type="hidden" name="id3" value=@Model.ElementAt(2).Id />
+                <input type="hidden" name="id1" value=@Model.ThreeInterests.ElementAt(0).Id />
+                <input type="hidden" name="id2" value=@Model.ThreeInterests.ElementAt(1).Id />
+                <input type="hidden" name="id3" value=@Model.ThreeInterests.ElementAt(2).Id />
                 <button type="submit" id="vip">ничего</button>
             </form>
         </li>

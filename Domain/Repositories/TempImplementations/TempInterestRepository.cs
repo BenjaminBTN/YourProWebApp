@@ -48,19 +48,23 @@ namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
         };
 
 
-        public void DeleteInterest(int id) {
+        public void Delete(int id) {
             _interests.Remove(_interests.Single(interest => interest.Id == id));
         }
 
-        public IQueryable<Interest> GetAllInterests() {
-            return _interests.AsQueryable();
+        public IQueryable<int> GetAllId() {
+            int[] ids = new int[_interests.Count];
+            for (int i = 0; i < ids.Length; i++) {
+                ids[i] = _interests[i].Id;
+            }
+            return ids.AsQueryable();
         }
 
         public Interest GetInterestById(int id) {
             return _interests.Single(interest => interest.Id == id);
         }
 
-        public void SaveInterest(Interest interest) {
+        public void Save(Interest interest) {
             if (_interests.Where(i => i.Id == interest.Id).Count() > 0) {
                 _interests[_interests.FindIndex(i => i.Id == interest.Id)] = interest;
             } else {

@@ -16,7 +16,7 @@ namespace YourProfessionWebApp.Models {
             }
         }
 
-        public void GetBestProfession(IProfessionItemRepository proRepository, List<Interest> interests) {
+        public void GetBestProfession(IProfessionItemRepository proRepository, List<int> interests) {
             int max = 0;
 
             List<ProfessionItem> proItems = proRepository.GetAllProfessionItems().ToList();
@@ -24,7 +24,7 @@ namespace YourProfessionWebApp.Models {
             foreach (var proItem in proItems) {
                 foreach (var interest in proItem.InterestsId) {
                     foreach (var i in interests) {
-                        if (i.Id == interest) {
+                        if (i == interest) {
                             max++;
                         }
                     }
