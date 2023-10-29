@@ -1,10 +1,10 @@
-﻿using YourProfessionWebApp.Domain.Entities;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
+﻿using YourProfessionWebApp.Domain.Repositories.Interfaces;
+using YourProfessionWebApp.Service;
 
 namespace YourProfessionWebApp.Models {
     public class ResultProViewModel {
 
-        public Dictionary<string, int> RelevantProfessions { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> RelevantProfessions { get; set; }
 
         public int MaxOverlap {
             get {
@@ -16,24 +16,8 @@ namespace YourProfessionWebApp.Models {
             }
         }
 
-        public void GetBestProfession(IProfessionItemRepository proRepository, List<int> interests) {
-            int max = 0;
-
-            List<ProfessionItem> proItems = proRepository.GetAllProfessionItems().ToList();
-
-            foreach (var proItem in proItems) {
-                foreach (var interest in proItem.InterestsId) {
-                    foreach (var i in interests) {
-                        if (i == interest) {
-                            max++;
-                        }
-                    }
-                }
-                if (max > 0) {
-                    RelevantProfessions.Add(proItem.Title, max);
-                }
-                max = 0;
-            }
+        public ResultProViewModel(IProfessionItemRepository repository, List<int> interests) {
+            RelevantProfessions = ProfessionsService.GetRelevantProfessions(repository, interests);
         }
     }
 }

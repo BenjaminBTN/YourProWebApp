@@ -37,8 +37,7 @@ namespace YourProfessionWebApp.Controllers {
 
         [HttpGet]
         public IActionResult Result() {
-            result = new ResultProViewModel();
-            result.GetBestProfession(professionItemRepository, cloud.FavoriteInterests);
+            result = new ResultProViewModel(professionItemRepository, cloud.FavoriteInterests);
             ViewBag.Remains = cloud.RemainingInterests.Count;
 
             return View(result);
