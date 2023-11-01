@@ -1,10 +1,11 @@
-﻿using YourProfessionWebApp.Domain.Repositories.Interfaces;
+﻿using YourProfessionWebApp.Domain.Entities;
+using YourProfessionWebApp.Domain.Repositories.Interfaces;
 using YourProfessionWebApp.Service;
 
 namespace YourProfessionWebApp.Models {
     public class ResultProViewModel {
 
-        public Dictionary<string, int> RelevantProfessions { get; set; }
+        public Dictionary<ProfessionItem, int> RelevantProfessions { get; set; }
 
         public int MaxOverlap {
             get {
@@ -15,6 +16,8 @@ namespace YourProfessionWebApp.Models {
                 return max;
             }
         }
+
+        public ResultProViewModel() { }
 
         public ResultProViewModel(IProfessionItemRepository repository, List<int> interests) {
             RelevantProfessions = ProfessionsService.GetRelevantProfessions(repository, interests);

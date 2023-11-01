@@ -8,7 +8,7 @@
 
 @foreach (var i in Model.RelevantProfessions) {
     if (i.Value == Model.MaxOverlap) {
-        <p>@i.Key</p>
+        <p>@i.Key.Title</p>
     }
 }
 

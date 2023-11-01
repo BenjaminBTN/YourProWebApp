@@ -4,12 +4,12 @@ using YourProfessionWebApp.Domain.Repositories.Interfaces;
 namespace YourProfessionWebApp.Service {
     public static class ProfessionsService {
 
-        public static Dictionary<string, int> GetRelevantProfessions(IProfessionItemRepository repository, 
+        public static Dictionary<ProfessionItem, int> GetRelevantProfessions(IProfessionItemRepository repository, 
                                                                       List<int> interests) {
             
             int max = 0;
 
-            Dictionary<string, int> relevantProfessions = new Dictionary<string, int>();
+            Dictionary<ProfessionItem, int> relevantProfessions = new Dictionary<ProfessionItem, int>();
             List<ProfessionItem> proItems = repository.GetAllProfessionItems().ToList();
 
             foreach (var proItem in proItems) {
@@ -21,7 +21,7 @@ namespace YourProfessionWebApp.Service {
                     }
                 }
                 if (max > 0) {
-                    relevantProfessions.Add(proItem.Title, max);
+                    relevantProfessions.Add(proItem, max);
                 }
                 max = 0;
             }
