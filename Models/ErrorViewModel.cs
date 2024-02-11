@@ -1,4 +1,4 @@
-namespace YourProfessionWebApp.Models {
+namespace YourProWebApp.Models {
     public class ErrorViewModel {
         public string? RequestId { get; set; }
 

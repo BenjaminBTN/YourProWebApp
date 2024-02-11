@@ -1,8 +1,8 @@
-﻿using YourProfessionWebApp.Domain.Entities;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
-using YourProfessionWebApp.Service;
+﻿using YourProWebApp.Domain.Entities;
+using YourProWebApp.Domain.Repositories.Interfaces;
+using YourProWebApp.Service;
 
-namespace YourProfessionWebApp.Models {
+namespace YourProWebApp.Models {
     public class ResultProViewModel {
 
         public Dictionary<ProfessionItem, int> RelevantProfessions { get; set; }

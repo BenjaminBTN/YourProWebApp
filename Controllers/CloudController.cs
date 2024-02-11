@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using YourProfessionWebApp.Domain.Entities;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
-using YourProfessionWebApp.Domain.Repositories.TempImplementations;
-using YourProfessionWebApp.Models;
-using YourProfessionWebApp.Service;
+using YourProWebApp.Domain.Repositories.Interfaces;
+using YourProWebApp.Models;
+using YourProWebApp.Service;
 
-namespace YourProfessionWebApp.Controllers {
+namespace YourProWebApp.Controllers {
     public class CloudController : Controller {
         private readonly IInterestRepository interestRepository;
         private readonly IProfessionItemRepository professionItemRepository;

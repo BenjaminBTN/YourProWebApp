@@ -1,7 +1,7 @@
-﻿using YourProfessionWebApp.Domain.Entities;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
+﻿using YourProWebApp.Domain.Entities;
+using YourProWebApp.Domain.Repositories.Interfaces;
 
-namespace YourProfessionWebApp.Service {
+namespace YourProWebApp.Service {
     public static class InterestsService {
 
         public static List<Interest> GetThreeInterests(List<int> remainingInterests, IInterestRepository repository) {

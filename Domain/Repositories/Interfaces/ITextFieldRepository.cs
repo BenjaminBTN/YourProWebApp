@@ -1,6 +1,6 @@
-﻿using YourProfessionWebApp.Domain.Entities;
+﻿using YourProWebApp.Domain.Entities;
 
-namespace YourProfessionWebApp.Domain.Repositories.Interfaces {
+namespace YourProWebApp.Domain.Repositories.Interfaces {
     public interface ITextFieldRepository {
         IQueryable<TextField> GetAllTextFields();
         TextField GetTextFieldByCodeWord(string codeWord);

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
-using YourProfessionWebApp.Models;
+using YourProWebApp.Domain.Repositories.Interfaces;
+using YourProWebApp.Models;
 
-namespace YourProfessionWebApp.Controllers {
+namespace YourProWebApp.Controllers {
     public class HomeController : Controller {
         private readonly ILogger<HomeController> _logger;
         IProfessionItemRepository _professionItemRepository;

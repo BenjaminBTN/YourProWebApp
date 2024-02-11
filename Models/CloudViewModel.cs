@@ -1,6 +1,6 @@
-﻿using YourProfessionWebApp.Domain.Entities;
+﻿using YourProWebApp.Domain.Entities;
 
-namespace YourProfessionWebApp.Models {
+namespace YourProWebApp.Models {
     public class CloudViewModel {
         
         public List<Interest> ThreeInterests { get; set; }

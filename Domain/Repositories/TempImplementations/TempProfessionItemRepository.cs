@@ -1,8 +1,8 @@
-﻿using YourProfessionWebApp.Domain.Entities;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
+﻿using YourProWebApp.Domain.Entities;
+using YourProWebApp.Domain.Repositories.Interfaces;
 using System.Linq;
 
-namespace YourProfessionWebApp.Domain.Repositories.TempImplementations {
+namespace YourProWebApp.Domain.Repositories.TempImplementations {
     public class TempProfessionItemRepository : IProfessionItemRepository {
 
         private static IInterestRepository _interestRepository = new TempInterestRepository();

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YourProfessionWebApp.Domain.Entities {
+namespace YourProWebApp.Domain.Entities {
     public class ProfessionItem {
 
         [Required]

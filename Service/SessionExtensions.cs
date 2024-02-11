@@ -1,10 +1,9 @@
-﻿using System.Linq.Expressions;
-using System.Text;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
-using YourProfessionWebApp.Domain.Repositories.TempImplementations;
-using YourProfessionWebApp.Models;
+﻿using System.Text;
+using YourProWebApp.Domain.Repositories.Interfaces;
+using YourProWebApp.Domain.Repositories.TempImplementations;
+using YourProWebApp.Models;
 
-namespace YourProfessionWebApp.Service {
+namespace YourProWebApp.Service {
     public static class SessionExtensions {
         private const string Key = "Result";
 
@@ -46,7 +45,5 @@ namespace YourProfessionWebApp.Service {
             value = null;
             return false;
         }
-
-
     }
 }

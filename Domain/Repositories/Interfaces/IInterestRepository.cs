@@ -1,6 +1,6 @@
-﻿using YourProfessionWebApp.Domain.Entities;
+﻿using YourProWebApp.Domain.Entities;
 
-namespace YourProfessionWebApp.Domain.Repositories.Interfaces {
+namespace YourProWebApp.Domain.Repositories.Interfaces {
     public interface IInterestRepository {
         IQueryable<int> GetAllId();
         Interest GetInterestById(int id);

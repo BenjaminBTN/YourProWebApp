@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using YourProfessionWebApp.Domain.Entities;
+using YourProWebApp.Domain.Entities;
 
-namespace YourProfessionWebApp.Domain {
+namespace YourProWebApp.Domain {
     public class Context : DbContext {
 
         public Context(DbContextOptions<Context> options) : base(options) { }

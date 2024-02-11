@@ -1,10 +1,10 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using YourProfessionWebApp.Domain;
-using YourProfessionWebApp.Domain.Repositories.Interfaces;
-using YourProfessionWebApp.Domain.Repositories.TempImplementations;
-using YourProfessionWebApp.Service;
+using YourProWebApp.Domain;
+using YourProWebApp.Domain.Repositories.Interfaces;
+using YourProWebApp.Domain.Repositories.TempImplementations;
+using YourProWebApp.Service;
 
-namespace YourProfessionWebApp {
+namespace YourProWebApp {
     public class Program {
         public static void Main(string[] args) {
 
