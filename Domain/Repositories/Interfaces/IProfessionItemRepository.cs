@@ -3,8 +3,8 @@
 namespace YourProWebApp.Domain.Repositories.Interfaces {
     public interface IProfessionItemRepository {
         IQueryable<ProfessionItem> GetAllProfessionItems();
-        ProfessionItem GetProfessionItemById(Guid id);
+        ProfessionItem GetProfessionItemById(int id);
         void SaveProfessionItem(ProfessionItem entity);
-        void DeleteProfessionItem(Guid id);
+        void DeleteProfessionItem(int id);
     }
 }

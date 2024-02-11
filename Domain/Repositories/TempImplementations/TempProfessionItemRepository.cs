@@ -13,41 +13,41 @@ namespace YourProWebApp.Domain.Repositories.TempImplementations {
 
         private static List<ProfessionItem> _professionItems = new List<ProfessionItem> {
             new ProfessionItem() {
-                Id = Guid.NewGuid(),
+                Id = 1,
                 Title = "Руководитель строительного проекта",
                 Text = "Менеджер проектов, в обязанности которого входит контроль и организация реализации строительного проекта",
                 InterestsId = new List<int> { 3, 4, 6 }
             },
             new ProfessionItem() {
-                Id = Guid.NewGuid(),
+                Id = 2,
                 Title = "Асситент руководителя строительного проекта",
                 Text = "Помощник РП",
                 InterestsId = new List<int> { 3, 4, 6 }
             },
             new ProfessionItem() {
-                Id = Guid.NewGuid(),
+                Id = 3,
                 Title = "Художник",
                 InterestsId = new List<int> { 9 }
             },
             new ProfessionItem() {
-                Id = Guid.NewGuid(),
+                Id = 4,
                 Title = "Автомеханик", 
                 InterestsId = new List < int > { 2 }
             },
             new ProfessionItem() {
-                Id = Guid.NewGuid(),
+                Id = 5,
                 Title = "Футболист",
                 InterestsId = new List < int > { 5, 8 }
             },
             new ProfessionItem() {
-                Id = Guid.NewGuid(),
+                Id = 6,
                 Title = "Управляющий директор",
                 Text = "Директор по доверенности от УК",
                 InterestsId = new List < int > { 3 }
             }
         };
 
-        public void DeleteProfessionItem(Guid id) {
+        public void DeleteProfessionItem(int id) {
             _professionItems.Remove(_professionItems.Single(p => p.Id == id));
         }
 
@@ -55,7 +55,7 @@ namespace YourProWebApp.Domain.Repositories.TempImplementations {
             return _professionItems.AsQueryable();
         }
 
-        public ProfessionItem GetProfessionItemById(Guid id) {
+        public ProfessionItem GetProfessionItemById(int id) {
             return _professionItems.FirstOrDefault(p => p.Id == id);
         }
 

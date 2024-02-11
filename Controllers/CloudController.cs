@@ -13,6 +13,7 @@ namespace YourProWebApp.Controllers {
         public CloudController(IInterestRepository interestRepository, IProfessionItemRepository professionItemRepository) {
             this.interestRepository = interestRepository;
             this.professionItemRepository = professionItemRepository;
+//            HhParser.ReloadDbFromHh(professionItemRepository);
         }
 
         [HttpGet]

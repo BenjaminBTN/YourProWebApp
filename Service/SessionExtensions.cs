@@ -37,7 +37,7 @@ namespace YourProWebApp.Service {
                         var itemId = reader.ReadString();
                         var lvl = reader.ReadInt32();
 
-                        value.RelevantProfessions.Add(repository.GetProfessionItemById(new Guid(itemId)), lvl);
+                        value.RelevantProfessions.Add(repository.GetProfessionItemById(int.Parse(itemId)), lvl);
                     }
                     return true;
                 }
