@@ -16,12 +16,12 @@ namespace YourProWebApp.Service {
             foreach (var cat in categories) {
                 var roles = cat["roles"];
                 foreach (var item in roles) {
-                    if (item != null && !repository.GetAllProfessionItems().Select(x => x.Title).Equals(item["name"].ToString())) {
+                    if (!repository.GetAllProfessionItems().Select(x => x.Title).Equals(item["name"].ToString())) {
                         repository.SaveProfessionItem(new ProfessionItem() { 
                             Id = repository.GetAllProfessionItems().Count(), 
                             Title = item["name"].ToString(), 
                             Text  = string.Empty, 
-                            Category = cat.ToString(), 
+                            Category = cat["name"].ToString(), 
                             InterestsId = new List<int>(), 
                         });
                     }
