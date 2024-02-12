@@ -1,20 +1,21 @@
 ﻿using YourProWebApp.Domain.Entities;
 using YourProWebApp.Domain.Repositories.Interfaces;
 using System.Linq;
+using YourProWebApp.Service;
 
 namespace YourProWebApp.Domain.Repositories.TempImplementations {
     public class TempProfessionItemRepository : IProfessionItemRepository {
 
         private static IInterestRepository _interestRepository = new TempInterestRepository();
 
-/*        public TempProfessionItemRepository(IInterestRepository interestRepository) {
-            _interestRepository = interestRepository;
-        }*/
+        public TempProfessionItemRepository() {
+            HhParser.ReloadDbFromHh(this);
+        }
 
         private static List<ProfessionItem> _professionItems = new List<ProfessionItem> {
             new ProfessionItem() {
                 Id = 0,
-                Title = "Руководитель строительного проекта",
+                Title = "Руководитель строительного проекта1",
                 Text = "Менеджер проектов, в обязанности которого входит контроль и организация реализации строительного проекта",
                 InterestsId = new List<int> { 3, 4, 6 }
             },
